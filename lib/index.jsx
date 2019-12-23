@@ -1,4 +1,4 @@
-export default class SharedState {
+export default class SharedStore {
     constructor(initialState) {
         this.initialState = {...initialState};
         this.state = {...initialState};

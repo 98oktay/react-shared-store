@@ -1,6 +1,6 @@
 {
-  "name": "react-shared-state",
-  "version": "0.1.0",
+  "name": "react-shared-store",
+  "version": "0.1.1",
   "description": "State sharing with multiple components and tabs",
   "main": "lib/index.js",
   "scripts": {
