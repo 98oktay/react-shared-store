@@ -1,0 +1,12 @@
+{
+  "name": "react-shared-state",
+  "version": "0.1.0",
+  "description": "State sharing with multiple components and tabs",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["react","state","store","global","shared"],
+  "author": "Oktay Başkuş <98oktay@gmail.com>",
+  "license": "MIT"
+}
