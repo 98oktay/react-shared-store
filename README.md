@@ -3,8 +3,8 @@ State sharing with multiple components. You can save the state to localStorage o
 
 [![npm](https://img.shields.io/npm/v/react-shared-store.svg)](https://npmjs.org/package/react-shared-store)
 [![downloads](https://img.shields.io/npm/dm/react-shared-store.svg)](https://npmjs.org/package/react-shared-store)
-[![keywords](https://img.shields.io/github/package-json/keywords/98oktay/react-shared-store.svg)](https://npmjs.org/package/react-shared-store)
-[![author](https://img.shields.io/github/package-json/author/98oktay/react-shared-store.svg)](https://npmjs.org/package/react-shared-store)
+[![keywords](https://img.shields.io/github/package-json/keywords/98oktay/react-shared-store.svg?)](https://npmjs.org/package/react-shared-store)
+[![author](https://img.shields.io/github/package-json/author/98oktay/react-shared-store.svg?)](https://npmjs.org/package/react-shared-store)
 
 ### Features
 - Create an dataStore Instance from that can be shared between multiple components.
