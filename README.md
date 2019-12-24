@@ -1,68 +1,91 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#  React Shared Store
+State sharing with multiple components. You can save the state to localStorage or sessionStorage if you want and share between browser tabs.
 
-## Available Scripts
 
-In the project directory, you can run:
+### Features
+- Create an dataStore Instance from that can be shared between multiple components.
+- Register components so that they automatically re-render when selected state properties change.
+- You can keep it in the browser using localStorage (or sessionStorage).
+- If desired, it performs state sync on the browser tabs.
 
-### `yarn start`
+### Installation
+```sh 
+yarn add react-shared-store
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Code Demo
+The following is an product/basket example of how to modify a property in a shared store object.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+##### Create an Shared Store Instance
+BasketStore.js
+```js
+import SharedStore from "react-shared-store";
 
-### `yarn test`
+const BasketStore = new SharedStore(
+    {
+        basketItems: []
+    }
+);
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+export default BasketStore;
+```
+_Create a new instance with initial state values. And export it._
 
-### `yarn build`
+##### Basket component
+Basket.js
+```js
+import BasketStore from "./BasketStore.js";
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default class Basket extends React.Component {
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+    componentDidMount() {
+        BasketStore.register(this, "basketItems") // or multiple keys ["basketItems","totalPrice"]
+    }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    componentWillUnmount() {
+         BasketStore.unregister(this)
+    }
 
-### `yarn eject`
+    render() {
+        const {basketItems} = BasketStore.state;
+        return <ul>
+           basketItems.map((item, key) =>
+               <li key={key}>
+                {item.name} - {item.price}
+               </li>
+           )
+        </ul>
+    }
+}
+```
+_Need to register to monitor the changes of a property._
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### Listing component
+Listing.js
+```js
+import BasketStore from "./BasketStore.js";
+import products from "./products.json";
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default class Listing extends React.Component {
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    onAddProduct = (item) => {
+        BasketStore.setState((prevState)=>{
+            return {
+                basketItems: [...prevState.basketItems, item]
+            }
+        });
+    }
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+    render() {
+        return <ul>
+           products.map((item, key) =>
+               <li key={key}>
+                {item.name} - {item.price}
+                <button onClick={()=>this.onAddProduct(item)}>Add To Basket</button>
+               </li>
+           )
+        </ul>
+    }
+}
+```
+_Store Updateing is easy. It is the same as using react's setState()_
