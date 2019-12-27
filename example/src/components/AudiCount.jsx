@@ -13,7 +13,7 @@ export default class AudiCount extends React.Component {
             <div> mainStore.register(this, "count")</div>
             Audi Sayısı: {mainStore.state.count}
             <br/>
-            Audi Fiyatları: {mainStore.state.fiyat}
+            Audi Fiyatları: {mainStore.state.price}
         </div>
     }
 }

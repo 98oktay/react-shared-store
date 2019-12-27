@@ -15,7 +15,7 @@ export default class Audi extends React.Component {
             <div> mainStore.register(this, "fiyat")</div>
             Audi Sayısı: {mainStore.state.count}
             <br/>
-            Audi Fiyatları: {mainStore.state.fiyat}
+            Audi Fiyatları: {mainStore.state.price}
             <br/>
             <button onClick={()=>mainStore.register(this)}>register all</button>
             <button onClick={()=>mainStore.unregister(this)}>Unregister</button>

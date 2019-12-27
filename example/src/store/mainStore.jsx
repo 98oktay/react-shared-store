@@ -1,8 +1,8 @@
-import SharedStore from "react-shared-store";
+import SharedStore from "../../../"; // from "react-shared-store";
 
 const mainStore = new SharedStore({
     count: 1,
-    fiyat: 100000
+    price: 100000
 });
 
 

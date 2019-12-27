@@ -1,14 +1,14 @@
 {
   "name": "react-shared-store",
-  "version": "0.1.32",
+  "version": "0.1.34",
   "description": "State sharing with multiple components and tabs",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {},
   "keywords": ["react","state","store","global","shared"],
   "author": "Oktay Başkuş <98oktay@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/98oktay/react-shared-state.git"
+    "url": "https://github.com/98oktay/react-shared-store.git"
   },
   "license": "MIT"
 }
