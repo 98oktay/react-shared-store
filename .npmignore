@@ -10,3 +10,4 @@ node_modules/*
 # example
 
 example/*
+performance-test/

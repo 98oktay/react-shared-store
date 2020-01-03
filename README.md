@@ -14,6 +14,10 @@ State sharing with multiple components. You can save the state to localStorage o
 
 ### Installation
 ```sh 
+npm install react-shared-store --save
+```
+or
+```sh 
 yarn add react-shared-store
 ```
 ----
