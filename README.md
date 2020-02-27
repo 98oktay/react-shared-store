@@ -55,6 +55,12 @@ export default class Basket extends React.Component {
          BasketStore.unregister(this)
     }
 
+    onStoreUpdated (state, prevState) {
+        // optionally.
+        // this method is called when
+        // the registered store values changes
+    }
+
     render() {
         const {basketItems} = BasketStore.state;
         return <ul>

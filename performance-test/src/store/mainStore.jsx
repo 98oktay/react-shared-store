@@ -6,7 +6,6 @@ const mainStore = new SharedStore({
     color: "#00ff00"
 });
 
-
 mainStore.useStorage("mainStorage", {
     shareOnTabs: true
 });
